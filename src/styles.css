@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootswatch/dist/Vapor/bootstrap.min.css";
+.titulo{
+    text-align: center;
+    font-size: 50px;
+    color: #03045e;
+}
+
