@@ -1,42 +1,66 @@
 <div class="card card border-warning mt-3">
   <div class="card-body">
-    <h5 class="titulo subtitulo">Crear Tarea</h5>
-    <form>
+    <h5 class="titulo subtitulo">{{titulo | titlecase}}
+      <div *ngIf="loading" class="spinner-grow text-warning float-end" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </h5>
+    <form [formGroup]="formBuilder" (ngSubmit)="guardarTareaEdit()" role="form">
       <div class="input-group input-group-lg mb-3">
-        <span class="input-group-text"><i class="far fa-star"></i></span>
-        <input class="form-control" id="" type="text" placeholder="Titulo" />
+        <span class="input-group-text">
+          <i class="far fa-star"
+            [class.color-icon]="this.formBuilder.get('titulo')?.valid"
+            [class.color-icon-false]="this.formBuilder.get('titulo')?.invalid && this.formBuilder.get('titulo')?.touched">
+          </i>
+        </span>
+        <input class="form-control" id="" type="text" placeholder="Titulo" formControlName="titulo" maxlength="30" />
       </div>
       <div class="input-group input-group-lg mb-3">
-        <span class="input-group-text"
-          ><i class="fas fa-exclamation-circle"></i
-        ></span>
-        <input class="form-control" id="" type="text" placeholder="Prioridad" />
+        <span class="input-group-text">
+          <i class="fas fa-exclamation-circle " [class.color-icon]="this.formBuilder.get('prioridad')?.valid"
+          [class.color-icon-false]="this.formBuilder.get('prioridad')?.invalid && this.formBuilder.get('prioridad')?.touched">
+          </i>
+        </span>
+        <input class="form-control" id="" type="text" placeholder="Prioridad" formControlName="prioridad"
+          maxlength="10" />
       </div>
       <div class="row">
         <div class="col-lg-6">
           <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text"
-              ><i class="far fa-calendar-alt"></i
-            ></span>
-            <input class="form-control" id="" type="text" placeholder="Fecha Inicio" />
+            <span class="input-group-text">
+              <i class="far fa-calendar-alt" [class.color-icon]="this.formBuilder.get('fechaInicio')?.valid"
+              [class.color-icon-false]="this.formBuilder.get('fechaInicio')?.invalid && this.formBuilder.get('fechaInicio')?.touched">
+              </i>
+          </span>
+            <input class="form-control" id="" type="text" placeholder="Fecha Inicio" formControlName="fechaInicio"
+              maxlength="5" />
           </div>
         </div>
         <div class="col-lg-6">
           <div class="input-group input-group-lg mb-3">
-            <span class="input-group-text"
-              ><i class="far fa-calendar-check"></i
-            ></span>  
-            <input class="form-control" id="" type="text" placeholder="Fecha Fin" />
+            <span class="input-group-text">
+              <i class="far fa-calendar-check" [class.color-icon]="this.formBuilder.get('fechaFin')?.valid"
+              [class.color-icon-false]="this.formBuilder.get('fechaFin')?.invalid && this.formBuilder.get('fechaFin')?.touched">
+              </i>
+           </span>
+            <input class="form-control" id="" type="text" placeholder="Fecha Fin" formControlName="fechaFin"
+              maxlength="5" />
           </div>
         </div>
       </div>
       <div class="input-group input-group-lg mb-3">
-        <span class="input-group-text"
-          ><i class="far fa-edit"></i></span>
-        <input class="form-control" id="" type="text" placeholder="Descripción" />
+        <span class="input-group-text">
+          <i class="far fa-edit" 
+          [class.color-icon]="this.formBuilder.get('descripcion')?.valid"
+          [class.color-icon-false]="this.formBuilder.get('descripcion')?.invalid && this.formBuilder.get('descripcion')?.touched">
+          </i>
+        </span>
+        <input class="form-control" id="" type="text" placeholder="Descripción" formControlName="descripcion"
+          maxlength="50"/>
       </div>
       <div class="d-grid gap-2">
-        <button type="button" class="btn btn-outline-warning  btn-text">Done</button>
+        <button type="submit" class="btn btn-outline-warning  btn-text">
+          <i class="fa fa-database ">&nbsp;</i>Done</button>
       </div>
     </form>
   </div>

@@ -3,5 +3,20 @@
         <h5 class="titulo subtitulo">
             Lista
           </h5>
-      </div>
+          <table class="table t">
+          <tbody>
+            <tr class="borde" *ngFor="let tarea of listaTarea">            
+                <td>{{tarea.titulo}}</td>
+                <td>{{tarea.prioridad}}</td>
+                <td>{{tarea.fechaInicio}}</td>
+                <td>{{tarea.fechaFin}}</td>
+                <td>{{tarea.descripcion}}</td>
+                <td>
+                    <i class="fas fa-pen text-success far" (click)="editarTarea(tarea)"></i>
+                    <i class="fas fa-trash-alt text-danger far"(click)="eliminarTarea(tarea.id)"></i>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+        </div>
   </div>

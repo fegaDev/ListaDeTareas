@@ -1,3 +1,10 @@
 .subtitulo{
     color: #43aa8b;
 }
+.far{
+    cursor: pointer;
+    margin-right: 7px;  
+}
+.borde{
+    border: 1px solid greenyellow;
+}
